@@ -32,3 +32,6 @@ div{
 #app{
 	grid-template-columns: 1fr;
 }
+.block{
+	margin-bottom: 1.25rem;
+}

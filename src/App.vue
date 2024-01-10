@@ -1,36 +1,21 @@
 <!-- todo -->
-<!-- Разбить на модули -->
-<!-- сделать квиз рабочим -->
-<!-- добавить квизу прогрессии -->
-<!-- добавить результат  -->
-<!-- если 2 ответа правильные = success text
-else = fail text  -->
 
-<!-- понять что такое v-bind -->
+<!-- show oly one question at a time -->
+
 
 <template>
   <div class="quiz">
-
-    <div v-for="e in questionList">
-      <h1>{{ e.question }}</h1>
-
-      <answers></answers>
-
-      <ul>
-        <li v-for="y in e.answerList" @click="checkAnswer(y)">{{ y.text }}</li>
-      </ul>
-    </div>
-
+    <questions :questionList="questionList">
+    </questions>
   </div>
 </template>
 
 <script>
-import answers from './components/Answers.vue';
-// import Answers from 'components/Answers.vue';
+import questions from './components/Questions.vue';
 
 export default {
   components: {
-    answers
+    questions
   },
 
   data() {

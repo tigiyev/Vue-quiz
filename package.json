@@ -8,10 +8,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "html-validate-vue": "^6.0.4",
+    "vue": "^3.4.7"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.4.0",
-    "vite": "^4.4.11"
+    "@vitejs/plugin-vue": "^5.0.3",
+    "vite": "^5.0.11"
   }
 }
