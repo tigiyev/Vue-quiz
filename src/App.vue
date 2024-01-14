@@ -1,11 +1,13 @@
 <!-- todo -->
 
 <!-- show oly one question at a time -->
+<!-- update parent data from child by using emits ?? read about-->
 
 
 <template>
+  <button @click="appTest()" style="width: 100px;">Debug App</button>
   <div class="quiz">
-    <questions :questionList="questionList" :test="test()">
+    <questions :questionList="questionList" :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect">
     </questions>
   </div>
 </template>
@@ -21,9 +23,9 @@ export default {
   data() {
 
     return {
-
+      questionsAnswered: 0,
+      totalCorrect: 0,
       questionList: [
-
         {
           question: 'Hewwo everynyan. Hawayu?',
           answerList: [
@@ -73,8 +75,10 @@ export default {
     }
   },
   methods: {
-    test() {
+    appTest() {
       console.log(this.questionList)
+      console.log(this.questionsAnswered)
+      console.log(this.totalCorrect)
     },
 
   }
@@ -82,7 +86,7 @@ export default {
 </script>
 
 <style>
-.quiz {
+/* .quiz {
   outline: 1px solid #4343b3;
-}
+} */
 </style>

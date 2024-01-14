@@ -1,21 +1,24 @@
 <template>
-	<!-- <h5 @click="test2()">Debug</h5> -->
-	<h5 @click="this.$parent.test()">Debug</h5>
+	<!-- <button @click="this.$parent.appTest()">Debug App</button> -->
+	<button @click="test2()">Debug Questions</button>
+	<br>
+
+	<div>Questions answered {{ questionsAnswered }}</div>
+	<div>Correct answers {{ totalCorrect }}</div>
+	<br>
 
 	<div class="block" v-for="qBlock in questionList">
-		<h1 class="question">{{ qBlock.question }}</h1>
-		<div class="answer" v-for="question in qBlock.answerList" @click="checkAnswer(question)" v-show="question.isCorrect">
+		<h3 class="question">{{ qBlock.question }}</h3>
+		<div class="answer" v-for="(question, index) in qBlock.answerList" @click="checkAnswer(question, questionsAnswered)">
 			{{ question.text }}
+			{{ index }}
 		</div>
 
-		<!-- <div v-if="checkAnswer(question) == true"> correct!</div> -->
+		<div @click="func(questionsAnswered)">Increase</div>
 
 
-		<!-- <p v-if="false">true</p>
-		<p v-else-if="'aaa' == 'aaa'">else if</p>
-		<p v-else>else</p>
-		<div v-show="true">show must go on</div>
-		<div v-show="false">show must NOT go on</div> -->
+		<button>Reset</button>
+
 
 
 	</div>
@@ -23,23 +26,27 @@
 
 <script>
 export default {
-	props: ['questionList'],
+	props: ['questionList', 'questionsAnswered', 'totalCorrect'],
+	// ??
+	emits: ['questionsAnswered', 'totalCorrect'],
+	// ??
 	methods: {
 		test2() {
-			// console.log(this.questionList);
-			// console.log(this.questionList[i].answerList);
-			console.log(this.i);
+			console.log(this.questionList)
+			console.log(this.questionsAnswered)
+			console.log(this.totalCorrect)
 
 		},
-		checkAnswer(question) {
+		checkAnswer(question, questionsAnswered) {
 			if (question.isCorrect) {
-				console.log("right")
+				questionsAnswered = questionsAnswered + 1;
+				console.log("right", questionsAnswered);
 			} else console.log("wrong")
 		},
 		func() {
-
 			console.log('hewwo!');
-
+			console.log(questionsAnswered);
+			// Why does not work 
 		}
 	}
 }
