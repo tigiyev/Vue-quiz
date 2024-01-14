@@ -5,7 +5,7 @@
 
 <template>
   <div class="quiz">
-    <questions :questionList="questionList">
+    <questions :questionList="questionList" :test="test()">
     </questions>
   </div>
 </template>
@@ -76,11 +76,7 @@ export default {
     test() {
       console.log(this.questionList)
     },
-    checkAnswer(y) {
-      if (y.isCorrect) {
-        console.log("right")
-      } else console.log("wrong")
-    }
+
   }
 }
 </script>
