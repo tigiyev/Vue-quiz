@@ -2,7 +2,7 @@
 	outline: 1px solid grey;
 } */
 
-h1{
+/* h1{
  color: #4343b3;
  font-size: 48px;
 }
@@ -15,7 +15,7 @@ h3{
 h4{
 	color: #66b3ba;
 	font-size: 24px;
-}
+} */
 
 ul{
 	font-size: 22px;
@@ -32,19 +32,25 @@ div{
 #app{
 	grid-template-columns: 1fr;
 }
+.quiz{
+	background-color: rgb(240, 236, 248);
+	padding: 2.5rem;
+	border-radius: 1rem;
+}
 .block{
 	margin-bottom: 1.25rem;
 }
 
 .question{
-	background-color: rgb(39, 48, 55);
-	padding: .25rem 1rem;
+	/* background-color: #273037; */
+	padding: .5rem 0;
 }
 .answer{
-	background-color: rgb(235, 235, 235);
+	background-color: #e0daed;
 	padding: .25rem 1rem;
 	border-bottom: 1px solid rgb(189, 189, 189);
 	user-select: none;
+	cursor: pointer;
 }
 .answer:hover{
 	filter: brightness(1.2);

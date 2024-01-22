@@ -1,23 +1,26 @@
 <!-- todo -->
 
-<!-- show oly one question at a time -->
-<!-- update parent data from child by using emits ?? read about-->
-
-
 <template>
-  <button @click="appTest()" style="width: 100px;">Debug App</button>
+  <!-- <button @click="appTest()" style="width: 100px;">Debug App</button> -->
+
   <div class="quiz">
-    <questions :questionList="questionList" :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect">
+    <questions v-if="questionsAnswered < questionList.length" :questionList="questionList"
+      :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect" @question-answered="questionAnswered">
     </questions>
+
+    <results v-else :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect"></results>
+
+    <button v-if="questionsAnswered === questionList.length" @click="reset()">Reset</button>
   </div>
 </template>
 
 <script>
-import questions from './components/Questions.vue';
+import Questions from './components/Questions.vue';
+import Results from './components/Results.vue';
 
 export default {
   components: {
-    questions
+    Questions, Results
   },
 
   data() {
@@ -80,6 +83,17 @@ export default {
       console.log(this.questionsAnswered)
       console.log(this.totalCorrect)
     },
+    questionAnswered(isCorrect) {
+      console.log(isCorrect);
+      if (isCorrect) {
+        this.totalCorrect++;
+      }
+      this.questionsAnswered++;
+    },
+    reset() {
+      this.totalCorrect = 0;
+      this.questionsAnswered = 0;
+    }
 
   }
 }
