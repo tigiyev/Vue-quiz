@@ -1,23 +1,23 @@
-<!--  how to show second question? -->
-
 <template>
-	<!-- <button @click="this.$parent.appTest()">Debug App</button> -->
-	<!-- <button @click="test2()">Debug Questions</button> -->
-	<br>
+	<div class="quiz">
+		<!-- <button @click="this.$parent.appTest()">Debug App</button> -->
+		<!-- <button @click="test2()">Debug Questions</button> -->
 
-	<div>Questions answered {{ questionsAnswered }}</div>
-	<div>Correct answers {{ totalCorrect }}</div>
-	<br>
+		<h5>Your result is: {{ totalCorrect }} / {{ questionsAnswered }} </h5>
 
-	<div class="block" v-for="(qBlock, index) in questionList" v-show="questionsAnswered === index">
-		<h3 class="question">Continue meme: <br> <i>{{ qBlock.question }}</i></h3>
-		<div class="answer" v-for="(answer, index2) in qBlock.answerList" @click="checkAnswer(answer.isCorrect)">
-			- {{ answer.text }}
-			<!-- {{ answer.isCorrect }} -->
-			<!-- {{ index2 }} -->
-		</div>
+		<transition-group name="fade">
+			<div class="block" v-for="(qBlock, index) in questionList" v-show="questionsAnswered === index">
+				<br>
+				<h5>Continue the meme:</h5>
+				<h3 class="question"><i>{{ qBlock.question }} ... </i></h3>
+				<div class="answer" v-for="(answer, index2) in qBlock.answerList" @click="checkAnswer(answer.isCorrect)">
+					... {{ answer.text }}
+					<!-- {{ answer.isCorrect }} -->
+					<!-- {{ index2 }} -->
+				</div>
+			</div>
+		</transition-group>
 
-		<!-- <div @click="func(questionsAnswered)">Increase</div> -->
 	</div>
 </template>
 

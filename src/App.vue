@@ -1,16 +1,18 @@
-<!-- todo -->
-
 <template>
   <!-- <button @click="appTest()" style="width: 100px;">Debug App</button> -->
 
-  <div class="quiz">
-    <questions v-if="questionsAnswered < questionList.length" :questionList="questionList"
-      :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect" @question-answered="questionAnswered">
-    </questions>
+  <div>
+    <transition name="fade" mode="out-in">
 
-    <results v-else :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect"></results>
+      <questions v-if="questionsAnswered < questionList.length" :questionList="questionList"
+        :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect" @question-answered="questionAnswered">
+      </questions>
+      <results v-else :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect"></results>
+
+    </transition>
 
     <button v-if="questionsAnswered === questionList.length" @click="reset()">Reset</button>
+
   </div>
 </template>
 
@@ -30,14 +32,14 @@ export default {
       totalCorrect: 0,
       questionList: [
         {
-          question: 'Hewwo everynyan. Hawayu?',
+          question: 'Hewwo everynyan! Hawayu?!',
           answerList: [
             {
-              text: 'Well sank you',
+              text: ' Well sank you',
               isCorrect: true
             },
             {
-              text: 'Wat?',
+              text: 'What?',
               isCorrect: false
             },
             {
@@ -45,13 +47,13 @@ export default {
               isCorrect: false
             },
             {
-              text: 'No?',
+              text: 'No',
               isCorrect: false
             },
           ]
         },
         {
-          question: 'Omaiwa mu shindeiru?',
+          question: 'Omaiwa mu shindeiru',
           answerList: [
             {
               text: 'Nani?',
@@ -67,6 +69,27 @@ export default {
             },
             {
               text: 'Nandayo',
+              isCorrect: false
+            },
+          ]
+        },
+        {
+          question: 'Dame-dame',
+          answerList: [
+            {
+              text: 'Origato joji!',
+              isCorrect: false
+            },
+            {
+              text: 'Nryaaan',
+              isCorrect: false
+            },
+            {
+              text: 'Dameyo sugi sugite',
+              isCorrect: true
+            },
+            {
+              text: 'Yamete Kudasai!',
               isCorrect: false
             },
           ]
