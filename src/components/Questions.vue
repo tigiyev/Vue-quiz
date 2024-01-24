@@ -5,18 +5,19 @@
 
 		<h5>Your result is: {{ totalCorrect }} / {{ questionsAnswered }} </h5>
 
-		<transition-group name="fade">
-			<div class="block" v-for="(qBlock, index) in questionList" v-show="questionsAnswered === index">
+		<transition-group222 name="fade222">
+			<div class="block" v-for="(qBlock, index) in questionList" :key="qBlock" v-show="questionsAnswered === index">
 				<br>
 				<h5>Continue the meme:</h5>
 				<h3 class="question"><i>{{ qBlock.question }} ... </i></h3>
-				<div class="answer" v-for="(answer, index2) in qBlock.answerList" @click="checkAnswer(answer.isCorrect)">
+				<div class="answer" v-for="(answer, index2) in qBlock.answerList" :key="answer"
+					@click="checkAnswer(answer.isCorrect)">
 					... {{ answer.text }}
 					<!-- {{ answer.isCorrect }} -->
 					<!-- {{ index2 }} -->
 				</div>
 			</div>
-		</transition-group>
+		</transition-group222>
 
 	</div>
 </template>

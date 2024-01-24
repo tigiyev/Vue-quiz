@@ -1,18 +1,14 @@
 <template>
   <!-- <button @click="appTest()" style="width: 100px;">Debug App</button> -->
 
-  <div>
-    <transition name="fade" mode="out-in">
-
+  <div class="main">
+    <transition name="fade" mode222="out-in">
       <questions v-if="questionsAnswered < questionList.length" :questionList="questionList"
         :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect" @question-answered="questionAnswered">
       </questions>
       <results v-else :questionsAnswered="questionsAnswered" :totalCorrect="totalCorrect"></results>
-
     </transition>
-
     <button v-if="questionsAnswered === questionList.length" @click="reset()">Reset</button>
-
   </div>
 </template>
 
@@ -122,8 +118,4 @@ export default {
 }
 </script>
 
-<style>
-/* .quiz {
-  outline: 1px solid #4343b3;
-} */
-</style>
+<style></style>
